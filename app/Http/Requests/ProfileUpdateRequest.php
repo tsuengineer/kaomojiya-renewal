@@ -15,9 +15,46 @@ class ProfileUpdateRequest extends FormRequest
      */
     public function rules(): array
     {
+        $userSlug = $this->user()->slug;
+
         return [
-            'name' => ['required', 'string', 'max:255'],
-            'email' => ['required', 'string', 'lowercase', 'email', 'max:255', Rule::unique(User::class)->ignore($this->user()->id)], // phpcs:ignore
+            'slug' => [
+                'string',
+                'max:255',
+                'regex:/^[a-zA-Z0-9_-]+$/',
+                Rule::unique(User::class)->where(function ($query) use ($userSlug) {
+                    return $query->where('slug', '!=', $userSlug);
+                })
+            ],
+            'name' => [
+                'required',
+                'string',
+                'max:255'
+            ],
+            'email' => [
+                'required',
+                'string',
+                'lowercase',
+                'email',
+                'max:255',
+                Rule::unique(User::class)->ignore($this->user()->id)
+            ],
+            'profile' => [
+                'nullable',
+                'nullable',
+                'string',
+                'max:255'
+            ],
+            'twitter' => [
+                'nullable',
+                'string',
+                'max:255'
+            ],
+            'instagram' => [
+                'nullable',
+                'string',
+                'max:255'
+            ],
         ];
     }
 }
