@@ -11,15 +11,15 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('facemark_list', function (Blueprint $table) {
+        Schema::create('facemark_group', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('facemark_id');
-            $table->unsignedBigInteger('list_id');
+            $table->unsignedBigInteger('group_id');
             $table->timestamps();
 
-            $table->unique(['facemark_id', 'list_id']);
+            $table->unique(['facemark_id', 'group_id']);
             $table->foreign('facemark_id')->references('id')->on('facemarks');
-            $table->foreign('list_id')->references('id')->on('lists');
+            $table->foreign('group_id')->references('id')->on('groups');
         });
     }
 
@@ -28,6 +28,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('facemark_list');
+        Schema::dropIfExists('facemark_group');
     }
 };
