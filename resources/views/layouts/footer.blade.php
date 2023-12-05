@@ -14,7 +14,7 @@
                         </a>
                     </li>
                     <li>
-                        <a href="https://twitter.com/aichibigirl" target="_blank">
+                        <a href="https://twitter.com/kaomojiyacon" target="_blank">
                             {{ __('anchor.twitter') }}
                         </a>
                     </li>
