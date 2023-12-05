@@ -39,34 +39,4 @@ class Facemark extends Model
     {
         return $this->hasMany(CopyHistory::class);
     }
-
-    public static function getLatestFacemarks()
-    {
-        return static::with('user', 'user.avatars')
-            ->orderBy('created_at', 'desc')
-            ->limit(20)
-            ->get();
-    }
-
-    public static function getRandomFacemarksExcluding($facemarkIds)
-    {
-        return static::with('user', 'user.avatars')
-            ->whereNotIn('id', $facemarkIds)
-            ->inRandomOrder()
-            ->limit(20)
-            ->get();
-    }
-
-    public function scopeSearchFacemarks(Builder $query, array $searchData)
-    {
-        return $query->with('user', 'user.avatars')
-            ->where(function ($query) use ($searchData) {
-                $query->where('data', 'like', "%{$searchData['keyword']}%");
-            })
-            ->when($searchData['tag'], function ($query) use ($searchData) {
-                $query->whereHas('tags', function ($query) use ($searchData) {
-                    $query->where('name', $searchData['tag']);
-                });
-            });
-    }
 }
