@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->unsignedBigInteger('user_id');
             $table->ulid()->unique()->comment('ULID');
-            $table->string('data')->comment('顔文字');
+            $table->string('data')->unique()->comment('顔文字');
             $table->integer('copy_count')->default(0);
             $table->timestamps();
 
