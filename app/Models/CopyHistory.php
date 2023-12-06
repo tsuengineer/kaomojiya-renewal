@@ -11,7 +11,7 @@ class CopyHistory extends Model
     use HasFactory;
 
     protected $fillable = [
-        'post_id',
+        'facemark_id',
         'accessed_at',
     ];
 

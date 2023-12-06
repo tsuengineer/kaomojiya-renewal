@@ -1,7 +1,7 @@
 @extends('layouts.common')
 @include('layouts.header')
 @section('title')
-    {{ __('title.dashboard') }}｜{{ config('app.name') }}
+    {{ __('title.my_page') }}｜{{ config('app.name') }}
 @endsection
 
 @section('content')

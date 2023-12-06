@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\ProfileUpdateRequest;
+use App\Usecases\Profile\IndexAction;
 use App\Usecases\Profile\UpdateAction;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
@@ -12,9 +13,13 @@ use Illuminate\View\View;
 
 class ProfileController extends Controller
 {
-    /**
-     * Display the user's profile form.
-     */
+    public function index(IndexAction $action): View
+    {
+        $data = $action();
+
+        return view('profile.index', $data);
+    }
+
     public function edit(Request $request): View
     {
         return view('profile.edit', [
@@ -22,9 +27,6 @@ class ProfileController extends Controller
         ]);
     }
 
-    /**
-     * Update the user's profile information.
-     */
     public function update(ProfileUpdateRequest $request, UpdateAction $action): RedirectResponse
     {
         $data = $request->validated();
@@ -35,9 +37,6 @@ class ProfileController extends Controller
         return redirect()->route('profile.edit')->with('status', 'profile-updated');
     }
 
-    /**
-     * Delete the user's account.
-     */
     public function destroy(Request $request): RedirectResponse
     {
         $request->validateWithBag('userDeletion', [

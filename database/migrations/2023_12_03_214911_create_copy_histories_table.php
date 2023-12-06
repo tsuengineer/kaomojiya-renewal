@@ -11,7 +11,7 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('access_logs', function (Blueprint $table) {
+        Schema::create('copy_histories', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('facemark_id');
             $table->string('ip_address', 50);
@@ -26,6 +26,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('access_logs');
+        Schema::dropIfExists('copy_histories');
     }
 };
