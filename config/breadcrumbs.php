@@ -1,5 +1,5 @@
 <?php
 
 return [
-    'view' => 'components/molecules/sections/breadcrumbs',
+    'view' => 'components/molecules/breadcrumbs',
 ];

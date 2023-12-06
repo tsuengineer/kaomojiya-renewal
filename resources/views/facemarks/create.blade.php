@@ -12,15 +12,15 @@
             </div>
 
             @if (count($errors) > 0)
-                <x-molecules.messages.aside type="error" class="mb-4 mx-2 sm:mx-0">
+                <x-molecules.aside type="error" class="mb-4 mx-2 sm:mx-0">
                     {{ __('messages.error_general') }}
-                </x-molecules.messages.aside>
+                </x-molecules.aside>
             @endif
 
             @if (!is_null(session('success')))
-                <x-molecules.messages.aside type="info" class="mb-4 mx-2 sm:mx-0">
+                <x-molecules.aside type="info" class="mb-4 mx-2 sm:mx-0">
                     {{ session('success') }}
-                </x-molecules.messages.aside>
+                </x-molecules.aside>
             @endif
 
 
