@@ -13,3 +13,9 @@ Breadcrumbs::for('create', function (BreadcrumbTrail $trail) {
     $trail->parent('top');
     $trail->push(__('title.post_facemark'), route('facemarks.create'));
 });
+
+// 検索
+Breadcrumbs::for('search', function (BreadcrumbTrail $trail) {
+    $trail->parent('top');
+    $trail->push(__('title.search'), route('search.index'));
+});

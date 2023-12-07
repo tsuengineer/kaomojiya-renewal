@@ -1,4 +1,4 @@
-<form class="flex w-full" action="" method="GET">
+<form class="flex w-full" action="{{ route('search.index') }}" method="GET">
 
     <div class="relative flex m-auto w-full">
         <input id='searchInput' class="w-full bg-white border border-gray-300 rounded-md py-2 px-10 text-sm placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent" type="text" placeholder="{{ __('messages.keyword') }}" name="keyword">

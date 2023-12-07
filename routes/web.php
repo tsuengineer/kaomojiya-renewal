@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\FacemarkController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\SearchController;
 use App\Http\Controllers\TopController;
 use Illuminate\Support\Facades\Route;
 
@@ -28,5 +29,7 @@ Route::middleware('auth')->group(function () {
     Route::post('/facemarks', [FacemarkController::class, 'store'])->name('facemarks.store');
     Route::delete('/facemarks/{ulid}', [FacemarkController::class, 'destroy'])->name('facemarks.destroy');
 });
+
+Route::get('/search', [SearchController::class, 'index'])->name('search.index');
 
 require __DIR__.'/auth.php';

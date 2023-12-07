@@ -31,10 +31,10 @@ class FacemarkFactory extends Factory
 
         return [
             'user_id' => function () {
-                return User::inRandomOrder()->first()->id;
+                return User::factory()->create()->id;
             },
             'ulid' => Str::ulid(),
-            'data' => $this->faker->sentence(20),
+            'data' => $this->faker->unique()->sentence(20),
             'copy_count' => $this->faker->numberBetween(0, 1000),
             'created_at' => $createdAt,
         ];
