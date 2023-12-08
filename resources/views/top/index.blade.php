@@ -12,8 +12,12 @@
                 {{ Breadcrumbs::render('top') }}
             </div>
 
-            <div class="flex justify-between items-center">
+            <h1 class="p-2 text-lg md:text-xl font-bold"># {{ __('messages.search_by_tag') }}</h1>
+            <x-molecules.tag-search-link></x-molecules.tag-search-link>
+
+            <div class="flex justify-between items-center mt-12">
                 <h1 class="p-2 text-lg md:text-xl font-bold"># {{ __('messages.new_arrivals') }}</h1>
+                <a href="{{ route('search.index') }}" class="pr-2 underline">{{ __('anchor.view_more') }}</a>
             </div>
 
             <ul class="flex grid lg:grid-cols-2 mb-12">

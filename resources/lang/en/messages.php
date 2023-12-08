@@ -15,6 +15,7 @@ return [
     "post_facemark_button" => "Post",
     "random" => "Random",
     "search" => "Search",
+    "search_by_tag" => "Search by tag",
     "search_requirements" => "Search requirements",
     "site_name" => "Kaomojiya",
     "sort" => "Sort",

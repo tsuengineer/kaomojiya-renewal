@@ -11,7 +11,7 @@
                 {{ Breadcrumbs::render('search') }}
             </div>
 
-            <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
+            <div class="max-w-7xl mx-auto">
                 <h1 class="px-2 font-bold">{{ __('title.search_results') }}</h1>
 
                 <div class="my-2 p-2 bg-gray-100 rounded-lg">
@@ -23,7 +23,9 @@
                         </div>
                         <div class="flex flex-col pb-2">
                             <label>{{ __('messages.tag') }}:</label>
-                            <x-text-input class="p-1 border rounded-md" type="text" name="tag" value="{{ $searchData['tag'] ?? '' }}"></x-text-input>
+                            <x-text-input class="p-1 border rounded-md" type="text" name="tag"
+                                          value="{{ (!in_array($searchData['tag'] ?? '', config('tag.default'))) ? $searchData['tag'] : '' }}">
+                            </x-text-input>
                         </div>
                         <div class="flex flex-col pb-2">
                             <label class="">{{ __('messages.sort') }}:</label>

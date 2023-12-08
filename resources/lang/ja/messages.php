@@ -15,6 +15,7 @@ return [
     "post_facemark_button" => "顔文字を投稿",
     "random" => "ランダム",
     "search" => "検索",
+    "search_by_tag" => "タグから探す",
     "search_requirements" => "検索条件",
     "site_name" => "顔文字屋さん",
     "sort" => "表示順",
