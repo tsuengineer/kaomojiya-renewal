@@ -46,13 +46,13 @@
                     <div class="my-4">
                         {{ $facemarks->appends(['keyword' => $searchData['keyword'], 'tag' => $searchData['tag'], 'order' => $searchData['order']])->links() }}
                     </div>
-                    <div class="flex grid lg:grid-cols-5 md:grid-cols-4 grid-cols-2 py-2 border shadow-sm sm:rounded-lg">
+                    <ul class="flex grid lg:grid-cols-2 mb-12">
                         @foreach($facemarks as $facemark)
-                            <div>
-                                {{ $facemark->data }}
-                            </div>
+                            <li class="py-2 px-1 border-b">
+                                <x-molecules.facemark-item :facemark="$facemark"></x-molecules.facemark-item>
+                            </li>
                         @endforeach
-                    </div>
+                    </ul>
                     <div class="my-4">
                         {{ $facemarks->appends(['keyword' => $searchData['keyword'], 'tag' => $searchData['tag'], 'order' => $searchData['order']])->links() }}
                     </div>

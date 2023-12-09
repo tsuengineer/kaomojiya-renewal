@@ -29,9 +29,9 @@ class Facemark extends Model
         return $this->belongsToMany(Tag::class, 'facemark_tag');
     }
 
-    public function groups(): BelongsToMany
+    public function favorites(): HasMany
     {
-        return $this->belongsToMany(Group::class, 'facemark_group');
+        return $this->hasMany(Favorite::class);
     }
 
     public function copyHistories(): HasMany

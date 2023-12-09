@@ -22,8 +22,8 @@
 
             <ul class="flex grid lg:grid-cols-2 mb-12">
                 @foreach($latestFacemarks as $facemark)
-                    <li class="py-2 px-1 border-b">
-                        {{ $facemark->data }}
+                    <li class="py-2 px-1 mr-2 border-b">
+                        <x-molecules.facemark-item :facemark="$facemark"></x-molecules.facemark-item>
                     </li>
                 @endforeach
             </ul>
@@ -32,7 +32,7 @@
             <ul class="flex grid lg:grid-cols-2 py-2 mb-12">
                 @foreach($randomFacemarks as $facemark)
                     <li class="py-2 px-1 border-b">
-                        {{ $facemark->data }}
+                        <x-molecules.facemark-item :facemark="$facemark"></x-molecules.facemark-item>
                     </li>
                 @endforeach
             </ul>

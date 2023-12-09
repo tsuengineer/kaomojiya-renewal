@@ -11,7 +11,9 @@
     @if(count($user->facemarks) > 0)
         <ul>
             @foreach($user->facemarks as $facemark)
-                <li>{{ $facemark->data }}</li>
+                <li class="py-2 px-1 mr-2 border-b">
+                    <x-molecules.facemark-item :facemark="$facemark"></x-molecules.facemark-item>
+                </li>
             @endforeach
         </ul>
     @else
