@@ -1,6 +1,10 @@
 <?php
 
 return [
+    "add_to_favorite" => "お気に入りに追加",
+    "copied" => "をコピーしました！",
+    "copy_facemark" => "顔文字をコピーする",
+    "details_of_this_facemark" => "この顔文字の詳細",
     "error_general" => "入力内容に誤りがあります。エラーメッセージを確認してください。",
     "error_page_204" => "削除対象のデータが見つかりません。",
     "error_page_403" => "アクセスが拒否されました。",
@@ -24,6 +28,7 @@ return [
     "posted_facemark" => "投稿した顔文字",
     "profile" => "プロフィール",
     "random" => "ランダム",
+    "remove_from_favorite" => "お気に入りを解除",
     "search" => "検索",
     "search_by_tag" => "タグから探す",
     "search_requirements" => "検索条件",

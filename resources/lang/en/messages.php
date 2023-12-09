@@ -1,6 +1,10 @@
 <?php
 
 return [
+    "add_to_favorite" => "Favorite",
+    "copied" => "copied!!",
+    "copy_facemark" => "Copy facemark",
+    "details_of_this_facemark" => "Details of this facemark",
     "error_general" => "There is an error in your input. Please check the error message.",
     "error_page_204" => "No data to delete was found.",
     "error_page_403" => "Access denied.",
@@ -24,6 +28,7 @@ return [
     "posted_facemark" => "Posted facemark",
     "profile" => "Profile",
     "random" => "Random",
+    "remove_from_favorite" => "Unfavorite",
     "search" => "Search",
     "search_by_tag" => "Search by tag",
     "search_requirements" => "Search requirements",
