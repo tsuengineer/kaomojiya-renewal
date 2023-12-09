@@ -1,5 +1,5 @@
 <div class="flex justify-between relative">
-    <div>
+    <div onclick="clickFacemark('{{ $facemark->data }}')">
         {{ $facemark->data }}
     </div>
     <div id="{{ $facemark->ulid }}" class="facemark-menu flex items-center">
@@ -7,10 +7,12 @@
             <x-atoms.icon-three-point-leader></x-atoms.icon-three-point-leader>
         </div>
     </div>
-    <div class="menu-options hidden bg-white border rounded p-2 right-0 top-6" id="menu-options-{{ $facemark->ulid }}" style="position: absolute; z-index: 1; width:200px; right:0; background:#fff">
-        <p class="cursor-pointer hover:bg-gray-200 py-1 px-2">顔文字をコピーする</p>
-        <p class="cursor-pointer hover:bg-gray-200 py-1 px-2">お気に入りに追加する</p>
-        <p class="cursor-pointer hover:bg-gray-200 py-1 px-2">この顔文字の詳細</p>
+    <div class="menu-options hidden bg-white border rounded shadow right-0 top-6 absolute z-10 w-48" id="menu-options-{{ $facemark->ulid }}" style="">
+        <p class="cursor-pointer hover:bg-gray-200 py-2 px-2" onclick="clickFacemark('{{ $facemark->data }}')">顔文字をコピーする</p>
+        <p class="cursor-pointer hover:bg-gray-200 py-2 px-2">お気に入りに追加する</p>
+        <p class="cursor-pointer hover:bg-gray-200 py-2 px-2">
+            <a href="#">この顔文字の詳細</a>
+        </p>
     </div>
 </div>
 
@@ -26,5 +28,21 @@
         });
 
         menuOptions.style.display = (menuOptions.style.display === 'block') ? 'none' : 'block';
+    }
+
+    function clickFacemark(copyText) {
+        navigator.clipboard.writeText(copyText)
+            .then(() => {
+                Swal.fire({
+                    toast: true,
+                    text: copyText + "\nをコピーしました！",
+                    position: 'top-end',
+                    showConfirmButton: false,
+                    timer: 2000
+            });
+            })
+            .catch(e => {
+                console.error(e);
+            });
     }
 </script>
