@@ -7,4 +7,6 @@ return [
     "search" => "Search",
     "search_results" => "Search results",
     "top_page" => "Top page",
+    "user" => "User",
+    "users" => "User list",
 ];

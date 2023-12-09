@@ -35,7 +35,7 @@ class UpdateActionTest extends TestCase
     /**
      * @test
      */
-    public function ユーザー情報を更新しアバター画像をアップロード()
+    public function ユーザ情報を更新しアバター画像をアップロード()
     {
         $data = [
             'name' => 'Updated Name',

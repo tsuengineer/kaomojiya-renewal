@@ -7,4 +7,6 @@ return [
     "search" => "検索",
     "search_results" => "検索結果",
     "top_page" => "トップページ",
+    "user" => "ユーザ個別",
+    "users" => "ユーザ一覧",
 ];

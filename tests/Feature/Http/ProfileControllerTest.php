@@ -67,7 +67,7 @@ class ProfileControllerTest extends TestCase
     /**
      * @test
      */
-    public function destroy_ユーザーアカウントを削除()
+    public function destroy_ユーザアカウントを削除()
     {
         $this->actingAs($this->user)
             ->delete(route('profile.destroy'))

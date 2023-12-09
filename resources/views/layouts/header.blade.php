@@ -5,13 +5,13 @@
             <div class="flex justify-between h-16">
                 <div class="flex w-full">
                     <!-- Logo -->
-                    <div class="shrink-0 flex items-center">
-                        <a href="{{ route('top.index') }}">
+                    <div class="shrink-0 flex">
+                        <a href="{{ route('top.index') }}" class="flex items-center">
                             <x-application-logo class="block h-9 w-auto fill-current text-gray-800 dark:text-gray-200" />
+                            <div class="pl-2 text-lg font-bold">
+                                {{ __('messages.site_name') }}
+                            </div>
                         </a>
-                        <div class="pl-2 text-lg font-bold">
-                            {{ __('messages.site_name') }}
-                        </div>
                     </div>
 
                     <!-- Search -->
@@ -34,13 +34,7 @@
                         <x-dropdown align="right">
                             <x-slot name="trigger">
                                 <button class="inline-flex items-center px-3 py-2 w-16 border border-transparent text-sm leading-4 font-medium rounded-md text-gray-500 dark:text-gray-400 bg-white dark:bg-gray-800 hover:text-gray-700 dark:hover:text-gray-300 focus:outline-none transition ease-in-out duration-150">
-                                    @if(Auth::user()->avatars?->path)
-                                        <img class="w-9 h-9 rounded-full my-auto" src="{{ asset('storage/' . config('image.avatar_path') . '/' . floor(Auth::user()->id / 1000) . '/' . Auth::user()->avatars->path) }}" alt="" />
-                                    @else
-                                        <div class="w-9 h-9 rounded-full my-auto border">
-                                            <img class="w-8 h-8 rounded-full m-auto" src="{{ asset('images/default_user.png') }}" alt="" />
-                                        </div>
-                                    @endif
+                                    <x-atoms.avatar :user="Auth::user()" type="header"></x-atoms.avatar>
                                 </button>
                             </x-slot>
 
@@ -90,6 +84,9 @@
             <div class="max-w-7xl mx-auto sm:px-6 lg:px-8 pt-2 pb-3 space-y-1 bg-gray-50">
                 <x-responsive-nav-link :href="route('top.index')" :active="request()->routeIs('top.index')">
                     {{ __('title.top_page') }}
+                </x-responsive-nav-link>
+                <x-responsive-nav-link :href="route('users.index')" :active="request()->routeIs('users.index')">
+                    {{ __('title.users') }}
                 </x-responsive-nav-link>
                 @auth
                     <x-responsive-nav-link :href="route('facemarks.create')" :active="request()->routeIs('facemarks.create')">

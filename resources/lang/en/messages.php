@@ -1,8 +1,11 @@
 <?php
 
 return [
+    "created_group" => "Created group",
     "error_general" => "There is an error in your input. Please check the error message.",
     "facemark" => "Facemark",
+    "following" => "Following",
+    "followers" => "Followers",
     "success_create_facemark" => "facemark have been successfully posted.",
     "success_delete_facemark" => "facemark were successfully removed.",
     "greeting" => "greeting",
@@ -10,9 +13,13 @@ return [
     "keyword" => "Keyword",
     "meta_description" => "This is a submission-based emoticon website. We introduce recommended emoticons and categorize them by type.",
     "new_arrivals" => "New arrivals",
+    "no_posts" => "No posts",
     "no_results" => "The search yielded 0 results.",
+    "post_count" => "Posts",
     "post_submit" => "Submit",
     "post_facemark_button" => "Post",
+    "posted_facemark" => "Posted facemark",
+    "profile" => "Profile",
     "random" => "Random",
     "search" => "Search",
     "search_by_tag" => "Search by tag",
@@ -22,4 +29,6 @@ return [
     "sort_asc" => "Asc",
     "sort_desc" => "Desc",
     "tag" => "Tag",
+    "unset" => "Unset",
+    "users" => "User list",
 ];

@@ -9,11 +9,6 @@
                         </a>
                     </li>
                     <li>
-                        <a href="/terms">
-                            {{ __('anchor.terms') }}
-                        </a>
-                    </li>
-                    <li>
                         <a href="https://twitter.com/kaomojiyacon" target="_blank">
                             {{ __('anchor.twitter') }}
                         </a>
