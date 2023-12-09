@@ -36,4 +36,9 @@ Route::get('/search', [SearchController::class, 'index'])->name('search.index');
 Route::get('/users', [UserController::class, 'index'])->name('users.index');
 Route::get('/users/{slug}', [UserController::class, 'show'])->name('users.show');
 
+Route::view('/errors/204', 'errors.204')->name('errors.204');
+Route::view('/errors/403', 'errors.403')->name('errors.403');
+Route::view('/errors/404', 'errors.404')->name('errors.404');
+Route::view('/errors/500', 'errors.500')->name('errors.500');
+
 require __DIR__.'/auth.php';

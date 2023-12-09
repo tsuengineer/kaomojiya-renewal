@@ -3,6 +3,10 @@
 return [
     "created_group" => "作成したグループ",
     "error_general" => "入力内容に誤りがあります。エラーメッセージを確認してください。",
+    "error_page_204" => "削除対象のデータが見つかりません。",
+    "error_page_403" => "アクセスが拒否されました。",
+    "error_page_404" => "ページが見つかりません。",
+    "error_page_500" => "一時的に利用できません。",
     "facemark" => "顔文字",
     "following" => "フォロー",
     "followers" => "フォロワー",

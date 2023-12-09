@@ -3,6 +3,10 @@
 return [
     "created_group" => "Created group",
     "error_general" => "There is an error in your input. Please check the error message.",
+    "error_page_204" => "No data to delete was found.",
+    "error_page_403" => "Access denied.",
+    "error_page_404" => "Page not found.",
+    "error_page_500" => "Service temporarily unavailable.",
     "facemark" => "Facemark",
     "following" => "Following",
     "followers" => "Followers",
