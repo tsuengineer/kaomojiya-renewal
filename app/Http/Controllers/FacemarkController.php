@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\FacemarkStoreRequest;
 use App\Models\Facemark;
 use App\Usecases\Facemark\DeleteAction;
-use App\Usecases\Facemark\IndexAction;
+use App\Usecases\Facemark\ShowAction;
 use App\Usecases\Facemark\StoreAction;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Response;
@@ -14,7 +14,7 @@ use Illuminate\View\View;
 
 class FacemarkController extends Controller
 {
-    public function index(string $ulid, IndexAction $action): Response
+    public function show(string $ulid, ShowAction $action): Response
     {
         $data = $action($ulid);
 
@@ -22,7 +22,7 @@ class FacemarkController extends Controller
             return response()->view('errors.404');
         }
 
-        return response()->view('facemarks.index', $data);
+        return response()->view('facemarks.show', $data);
     }
 
     public function create(): View

@@ -1,5 +1,6 @@
 <?php
 
+use App\Models\Facemark;
 use App\Models\User;
 use Diglactic\Breadcrumbs\Breadcrumbs;
 use Diglactic\Breadcrumbs\Generator as BreadcrumbTrail;
@@ -9,16 +10,22 @@ Breadcrumbs::for('top', function (BreadcrumbTrail $trail) {
     $trail->push(__('title.top_page'), route('top.index'));
 });
 
-// 投稿
+// 顔文字投稿
 Breadcrumbs::for('create', function (BreadcrumbTrail $trail) {
     $trail->parent('top');
     $trail->push(__('title.post_facemark'), route('facemarks.create'));
 });
 
-// 検索
+// 顔文字検索
 Breadcrumbs::for('search', function (BreadcrumbTrail $trail) {
     $trail->parent('top');
     $trail->push(__('title.search'), route('search.index'));
+});
+
+// 個別顔文字
+Breadcrumbs::for('facemarks.show', function (BreadcrumbTrail $trail, Facemark $facemark) {
+    $trail->parent('search');
+    $trail->push($facemark->data, route('facemarks.show', ['ulid' => $facemark->ulid]));
 });
 
 // ユーザ一覧

@@ -31,6 +31,8 @@ Route::middleware('auth')->group(function () {
     Route::delete('/facemarks/{ulid}', [FacemarkController::class, 'destroy'])->name('facemarks.destroy');
 });
 
+Route::get('/facemarks/{ulid}', [FacemarkController::class, 'show'])->name('facemarks.show');
+
 Route::get('/search', [SearchController::class, 'index'])->name('search.index');
 
 Route::get('/users', [UserController::class, 'index'])->name('users.index');

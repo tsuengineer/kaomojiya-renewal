@@ -41,7 +41,7 @@
 <header id="header">
     @yield('header')
 </header>
-<div class="content" style="min-height: calc(100vh - 230px)">
+<div class="content" style="min-height: calc(100vh - 200px)">
     @yield('content')
 </div>
 <footer id="footer" style="background-color: #2d3238;">

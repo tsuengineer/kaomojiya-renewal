@@ -7,7 +7,7 @@
             <x-atoms.icon-three-point-leader></x-atoms.icon-three-point-leader>
         </div>
     </div>
-    <div class="menu-options hidden bg-white border rounded shadow right-0 top-6 absolute z-10 w-48" id="menu-options-{{ $facemark->ulid }}" style="">
+    <div class="menu-options hidden bg-white border rounded shadow right-0 top-6 absolute z-10 w-48" id="menu-options-{{ $facemark->ulid }}">
         <p class="cursor-pointer hover:bg-gray-200 py-2 px-2" onclick="clickFacemark('{{ $facemark->data }}')">
             {{ __('messages.copy_facemark') }}
         </p>
@@ -15,7 +15,7 @@
             {{ __('messages.add_to_favorite') }}
         </p>
         <p class="cursor-pointer hover:bg-gray-200 py-2 px-2" onclick="hideAllMenuOptions()">
-            <a href="#">
+            <a href="{{ route('facemarks.show', ['ulid' => $facemark->ulid]) }}">
                 {{ __('messages.details_of_this_facemark') }}
             </a>
         </p>
