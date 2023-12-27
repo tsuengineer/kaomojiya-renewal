@@ -9,6 +9,7 @@ class ShowAction
     public function __invoke(string $ulid): array|null
     {
         $facemark = Facemark::with('user', 'user.avatars', 'tags')
+            ->withCount('favorites')
             ->where('ulid', $ulid)
             ->first();
 

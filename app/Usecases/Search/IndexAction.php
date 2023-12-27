@@ -10,6 +10,7 @@ class IndexAction
     public function __invoke(array $searchData): LengthAwarePaginator
     {
         return Facemark::with('user', 'user.avatars')
+            ->withCount('favorites')
             ->where(function ($query) use ($searchData) {
                 $query->where('data', 'like', "%{$searchData['keyword']}%");
             })

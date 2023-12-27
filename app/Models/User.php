@@ -55,6 +55,16 @@ class User extends Authenticatable
         return $this->hasMany(Facemark::class);
     }
 
+    public function favorites(): HasMany
+    {
+        return $this->hasMany(Favorite::class);
+    }
+
+    public function hasFavorite($facemark_id)
+    {
+        return $this->favorites->where('facemark_id', $facemark_id)->isNotEmpty();
+    }
+
     public function avatars(): HasOne
     {
         return $this->hasOne(Avatar::class);

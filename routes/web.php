@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\FacemarkController;
+use App\Http\Controllers\FavoriteController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\SearchController;
 use App\Http\Controllers\TopController;
@@ -37,6 +38,9 @@ Route::get('/search', [SearchController::class, 'index'])->name('search.index');
 
 Route::get('/users', [UserController::class, 'index'])->name('users.index');
 Route::get('/users/{slug}', [UserController::class, 'show'])->name('users.show');
+
+Route::post('/favorites/{id}', [FavoriteController::class, 'store'])->name('favorite.store');
+Route::delete('/favorites/{id}', [FavoriteController::class, 'destroy'])->name('favorite.destroy');
 
 Route::view('/errors/204', 'errors.204')->name('errors.204');
 Route::view('/errors/403', 'errors.403')->name('errors.403');

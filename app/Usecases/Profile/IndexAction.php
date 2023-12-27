@@ -22,6 +22,7 @@ class IndexAction
         }
 
         $facemarks = $user->facemarks()
+            ->withCount('favorites')
             ->orderBy('created_at', 'desc')
             ->paginate(40);
 
