@@ -7,10 +7,16 @@
                 {{ __('messages.favorite_facemark') }}
             @endif
         </h1>
-        @if(count($facemarks) > 0)
-            <a href="#" class="underline">
-                {{ __('anchor.view_more') }}
-            </a>
+        @if(count($facemarks) > 10)
+            @if ($prefix === 'post')
+                <a href="{{ route('search.index', ['user_slug' => $user->slug]) }}" class="underline">
+                    {{ __('anchor.view_more') }}
+                </a>
+            @elseif ($prefix === 'favorite')
+                <a href="{{ route('search.index', ['user_slug' => $user->slug, 'filter_by_favorite' => 1]) }}" class="underline">
+                    {{ __('anchor.view_more') }}
+                </a>
+            @endif
         @endif
     </div>
 
