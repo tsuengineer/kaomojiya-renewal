@@ -12,6 +12,7 @@ return [
     "error_page_500" => "Service temporarily unavailable.",
     "facemark" => "Facemark",
     "favorite_facemark" => "Favorite facemark",
+    "filter_by_favorites" => "Filter by facemarks favorite by a specified user",
     "following" => "Following",
     "followers" => "Followers",
     "success_create_facemark" => "facemark have been successfully posted.",
@@ -39,5 +40,6 @@ return [
     "sort_desc" => "Desc",
     "tag" => "Tag",
     "unset" => "Unset",
+    "user_id" => "User ID",
     "users" => "User list",
 ];

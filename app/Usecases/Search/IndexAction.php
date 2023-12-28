@@ -19,6 +19,18 @@ class IndexAction
                     $query->where('name', $searchData['tag']);
                 });
             })
+            ->when($searchData['userSlug'] && !$searchData['filterByFavorite'], function ($query) use ($searchData) {
+                $query->whereHas('user', function ($query) use ($searchData) {
+                    $query->where('slug', $searchData['userSlug']);
+                });
+            })
+            ->when($searchData['userSlug'] && $searchData['filterByFavorite'], function ($query) use ($searchData) {
+                $query->whereHas('favorites', function ($query) use ($searchData) {
+                    $query->where('user_id', function ($query) use ($searchData) {
+                        $query->select('id')->from('users')->where('slug', $searchData['userSlug']);
+                    });
+                });
+            })
             ->orderBy('created_at', $searchData['order'])
             ->paginate(50);
     }

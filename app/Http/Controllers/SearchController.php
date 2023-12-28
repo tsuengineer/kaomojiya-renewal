@@ -13,6 +13,8 @@ class SearchController extends Controller
         $searchData = [
             'keyword' => $request->input('keyword'),
             'tag' => $request->input('tag'),
+            'userSlug' => $request->input('user_slug'),
+            'filterByFavorite' =>  $request->input('filter_by_favorite', '0'),
             'order' => match ($request->input('order')) {
                 'asc' => 'asc',
                 default => 'desc',

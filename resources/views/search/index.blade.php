@@ -28,6 +28,16 @@
                             </x-text-input>
                         </div>
                         <div class="flex flex-col pb-2">
+                            <label>{{ __('messages.user_id') }}:</label>
+                            <x-text-input class="p-1 border rounded-md" type="text" name="user_slug" value="{{ $searchData['userSlug'] }}">
+                            </x-text-input>
+                        </div>
+                        <div>
+                            <x-atoms.toggle-button name="filter_by_favorite" :value="request('filter_by_favorite', '0')">
+                                {{ __('messages.filter_by_favorites') }}
+                            </x-atoms.toggle-button>
+                        </div>
+                        <div class="flex flex-col pb-2">
                             <label class="">{{ __('messages.sort') }}:</label>
                             <select class="p-1 border border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 rounded-md" name="order">
                                 <option value="desc" {{ ($searchData['order'] ?? '') !== 'asc' ? 'selected' : '' }}>{{ __('messages.sort_asc') }}</option>

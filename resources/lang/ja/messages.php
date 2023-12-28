@@ -12,6 +12,7 @@ return [
     "error_page_500" => "一時的に利用できません。",
     "facemark" => "顔文字",
     "favorite_facemark" => "お気に入りした顔文字",
+    "filter_by_favorites" => "指定したユーザがお気に入りに追加した顔文字で絞り込み",
     "following" => "フォロー",
     "followers" => "フォロワー",
     "success_create_facemark" => "顔文字の投稿が成功しました。",
@@ -39,5 +40,6 @@ return [
     "sort_desc" => "降順",
     "tag" => "タグ",
     "unset" => "未設定",
+    "user_id" => "ユーザID",
     "users" => "ユーザ一覧",
 ];
