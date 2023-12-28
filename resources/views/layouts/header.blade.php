@@ -39,7 +39,7 @@
                             </x-slot>
 
                             <x-slot name="content">
-                                <x-dropdown-link :href="route('profile.index')">
+                                <x-dropdown-link :href="route('users.show', Auth::user()->slug)">
                                     {{ __('anchor.my_page') }}
                                 </x-dropdown-link>
                                 <x-dropdown-link :href="route('profile.edit')">

@@ -13,13 +13,6 @@ use Illuminate\View\View;
 
 class ProfileController extends Controller
 {
-    public function index(IndexAction $action): View
-    {
-        $data = $action();
-
-        return view('profile.index', $data);
-    }
-
     public function edit(Request $request): View
     {
         return view('profile.edit', [

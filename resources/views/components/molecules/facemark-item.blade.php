@@ -12,9 +12,9 @@
             <p class="cursor-pointer hover:bg-gray-200 py-2 text-center w-full" onclick="clickFacemark('{{ $facemark->data }}')">
                 <i class="fa-regular fa-copy"></i>
             </p>
-            <p class="cursor-pointer hover:bg-gray-200 py-2 text-center w-full" onclick="hideAllMenuOptions()">
-                <a href="{{ route('facemarks.show', ['ulid' => $facemark->ulid]) }}">
-                    <i class="fa-solid fa-circle-info"></i>
+            <p class="cursor-pointer hover:bg-gray-200 text-center w-full" onclick="hideAllMenuOptions()">
+                <a href="{{ route('facemarks.show', ['ulid' => $facemark->ulid]) }}" class="block py-2">
+                    <i class="fa-solid fa-circle-info w-full h-full"></i>
                 </a>
             </p>
             @if(Auth::check())
@@ -23,19 +23,18 @@
                         <button id="favoriteButton-{{ $facemark->id }}" class="btn" data-action="remove" data-facemark-id="{{ $facemark->id }}">
                             <i class="fa-solid fa-star text-yellow-500"></i>
                         </button>
-                        <span class="text-xs text-yellow-500 fav-count">{{ $facemark->favorites_count }}</span>
+                        <span class="text-xs text-yellow-500 fav-count-{{ $facemark->id }}">{{ $facemark->favorites_count }}</span>
                     </p>
                 @else
                     <p class="cursor-pointer hover:bg-gray-200 py-2 text-center w-full" onclick="clickFavorite({{ $facemark->id }})">
                         <button id="favoriteButton-{{ $facemark->id }}" class="btn" data-action="add" data-facemark-id="{{ $facemark->id }}">
                             <i class="fa-regular fa-star"></i>
                         </button>
-                        <span class="text-xs fav-count">{{ $facemark->favorites_count }}</span>
+                        <span class="text-xs fav-count-{{ $facemark->id }}">{{ $facemark->favorites_count }}</span>
                     </p>
                 @endif
             @endif
         </div>
-
     </div>
 </div>
 
@@ -110,7 +109,7 @@
                         }
                         button.dataset.action = 'remove';
                         button.innerHTML = '<i class="fa-solid fa-star text-yellow-500"></i>';
-                        const favCount = document.querySelector('.fav-count');
+                        const favCount = document.querySelector('.fav-count-' + facemarkId);
                         favCount.innerText = data.favorite_count ?? 0;
                         favCount.classList.add('text-yellow-500');
                     });
@@ -137,7 +136,7 @@
                         }
                         button.dataset.action = 'add';
                         button.innerHTML = '<i class="fa-sharp fa-regular fa-star"></i>';
-                        const favCount = document.querySelector('.fav-count');
+                        const favCount = document.querySelector('.fav-count-' + facemarkId);
                         favCount.innerText = data.favorite_count ?? 0;
                         favCount.classList.remove('text-yellow-500');
                     });
