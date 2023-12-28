@@ -17,7 +17,7 @@
                     <x-organisms.user-aside :user="$user"></x-organisms.user-aside>
                 </aside>
                 <main class="sm:col-span-7 lg:col-span-8 sm:pt-4 sm:pr-4 pt-8 px-4">
-                    <x-organisms.user-main :user="$user"></x-organisms.user-main>
+                    <x-organisms.user-main :user="$user" :postFacemarks="$postFacemarks" :favoriteFacemarks="$favoriteFacemarks"></x-organisms.user-main>
                 </main>
             </div>
         </div>

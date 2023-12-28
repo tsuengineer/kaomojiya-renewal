@@ -3,11 +3,11 @@
         {{ $facemark->data }}
     </div>
     <div id="{{ $facemark->ulid }}" class="facemark-menu flex items-center">
-        <div onclick="toggleMenu('{{ $facemark->ulid }}')">
+        <div onclick="toggleMenu('{{ $facemark->ulid }}', '{{ $prefix }}')">
             <x-atoms.icon-three-point-leader></x-atoms.icon-three-point-leader>
         </div>
     </div>
-    <div class="menu-options hidden bg-white border rounded shadow right-0 top-6 absolute z-10 w-48" id="menu-options-{{ $facemark->ulid }}">
+    <div class="menu-options hidden bg-white border rounded shadow right-0 top-6 absolute z-10 w-48" id="menu-options-{{ $prefix }}{{ $facemark->ulid }}">
         <div class="flex justify-between">
             <p class="cursor-pointer hover:bg-gray-200 py-2 text-center w-full" onclick="clickFacemark('{{ $facemark->data }}')">
                 <i class="fa-regular fa-copy"></i>
@@ -20,14 +20,14 @@
             @if(Auth::check())
                 @if(Auth::user()->hasFavorite($facemark->id))
                     <p class="cursor-pointer hover:bg-gray-200 py-2 text-center w-full" onclick="clickFavorite({{ $facemark->id }})">
-                        <button id="favoriteButton-{{ $facemark->id }}" class="btn" data-action="remove" data-facemark-id="{{ $facemark->id }}">
+                        <button class="favoriteButton-{{ $facemark->id }} btn" data-action="remove" data-facemark-id="{{ $facemark->id }}">
                             <i class="fa-solid fa-star text-yellow-500"></i>
                         </button>
                         <span class="text-xs text-yellow-500 fav-count-{{ $facemark->id }}">{{ $facemark->favorites_count }}</span>
                     </p>
                 @else
                     <p class="cursor-pointer hover:bg-gray-200 py-2 text-center w-full" onclick="clickFavorite({{ $facemark->id }})">
-                        <button id="favoriteButton-{{ $facemark->id }}" class="btn" data-action="add" data-facemark-id="{{ $facemark->id }}">
+                        <button class="favoriteButton-{{ $facemark->id }} btn" data-action="add" data-facemark-id="{{ $facemark->id }}">
                             <i class="fa-regular fa-star"></i>
                         </button>
                         <span class="text-xs fav-count-{{ $facemark->id }}">{{ $facemark->favorites_count }}</span>
@@ -47,12 +47,12 @@
         });
     }
 
-    function toggleMenu(facemarkUlid) {
-        let menuOptions = document.getElementById('menu-options-' + facemarkUlid);
+    function toggleMenu(facemarkUlid, prefix) {
+        let menuOptions = document.getElementById('menu-options-' + prefix + facemarkUlid);
         let allMenuOptions = document.querySelectorAll('.menu-options');
 
         allMenuOptions.forEach(function (item) {
-            if (item.id !== 'menu-options-' + facemarkUlid) {
+            if (item.id !== 'menu-options-' + prefix + facemarkUlid) {
                 item.style.display = 'none';
             }
         });
@@ -79,16 +79,16 @@
     }
 
     function clickFavorite(facemarkId) {
-        const favoriteButton = document.getElementById('favoriteButton-' + facemarkId);
-        const action = favoriteButton.dataset.action;
-        if (action === 'add') {
-            addFavorite(facemarkId, favoriteButton);
-        }
-        if (action === 'remove') {
-            removeFavorite(facemarkId, favoriteButton);
-        }
-
-        hideAllMenuOptions();
+        const favoriteButtons = document.querySelectorAll('.favoriteButton-' + facemarkId);
+        favoriteButtons.forEach(function(favoriteButton) {
+            const action = favoriteButton.dataset.action;
+            if (action === 'add') {
+                addFavorite(facemarkId, favoriteButton);
+            }
+            if (action === 'remove') {
+                removeFavorite(facemarkId, favoriteButton);
+            }
+        });
     }
 
     // いいね追加処理
@@ -109,9 +109,11 @@
                         }
                         button.dataset.action = 'remove';
                         button.innerHTML = '<i class="fa-solid fa-star text-yellow-500"></i>';
-                        const favCount = document.querySelector('.fav-count-' + facemarkId);
-                        favCount.innerText = data.favorite_count ?? 0;
-                        favCount.classList.add('text-yellow-500');
+                        const favCounts = document.querySelectorAll('.fav-count-' + facemarkId);
+                        favCounts.forEach(function(favCount) {
+                            favCount.innerText = data.favorite_count ?? 0;
+                            favCount.classList.add('text-yellow-500');
+                        });
                     });
                 }
             })
@@ -136,9 +138,11 @@
                         }
                         button.dataset.action = 'add';
                         button.innerHTML = '<i class="fa-sharp fa-regular fa-star"></i>';
-                        const favCount = document.querySelector('.fav-count-' + facemarkId);
-                        favCount.innerText = data.favorite_count ?? 0;
-                        favCount.classList.remove('text-yellow-500');
+                        const favCounts = document.querySelectorAll('.fav-count-' + facemarkId);
+                        favCounts.forEach(function(favCount) {
+                            favCount.innerText = data.favorite_count ?? 0;
+                            favCount.classList.remove('text-yellow-500');
+                        });
                     });
                 }
             })

@@ -11,6 +11,7 @@ return [
     "error_page_404" => "Page not found.",
     "error_page_500" => "Service temporarily unavailable.",
     "facemark" => "Facemark",
+    "favorite_facemark" => "Favorite facemark",
     "following" => "Following",
     "followers" => "Followers",
     "success_create_facemark" => "facemark have been successfully posted.",

@@ -11,6 +11,7 @@ return [
     "error_page_404" => "ページが見つかりません。",
     "error_page_500" => "一時的に利用できません。",
     "facemark" => "顔文字",
+    "favorite_facemark" => "お気に入りした顔文字",
     "following" => "フォロー",
     "followers" => "フォロワー",
     "success_create_facemark" => "顔文字の投稿が成功しました。",
