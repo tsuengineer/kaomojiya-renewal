@@ -29,7 +29,7 @@
                         }
                         button.classList.remove("border-blue-600", "text-blue-600", "hover:bg-blue-600");
                         button.classList.add("border-red-600", "text-red-600", "hover:bg-red-600");
-                        button.innerText = "Unfollow";
+                        button.innerText = @json(__('messages.unfollow'));
                         button.dataset.action = 'remove';
                     });
                 }
@@ -54,7 +54,7 @@
                         }
                         button.classList.add("border-blue-600", "text-blue-600", "hover:bg-blue-600");
                         button.classList.remove("border-red-600", "text-red-600", "hover:bg-red-600");
-                        button.innerText = "Follow";
+                        button.innerText = @json(__('messages.follow'));
                         button.dataset.action = 'add';
                     });
                 }

@@ -25,13 +25,13 @@
     <div class="text-center my-8">
         @if (Auth::user() && Auth::user()->id !== $user->id)
             @if ($user->followings?->contains(Auth::user()->id))
-                <x-molecules.follow-button :user="$user" action="remove" color="red">
-                    Unfollow
-                </x-molecules.follow-button>
+                <x-atoms.follow-button :user="$user" action="remove" color="red">
+                    {{ __('messages.unfollow') }}
+                </x-atoms.follow-button>
             @else
-                <x-molecules.follow-button :user="$user" action="add" color="blue">
-                    Follow
-                </x-molecules.follow-button>
+                <x-atoms.follow-button :user="$user" action="add" color="blue">
+                    {{ __('messages.follow') }}
+                </x-atoms.follow-button>
             @endif
         @endif
     </div>

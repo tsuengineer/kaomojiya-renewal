@@ -20,37 +20,37 @@
                             <x-atoms.avatar :user="$user" size="9"></x-atoms.avatar>
                             <div class="pl-4">
                                 <div class="text-sm text-gray-600">&#64;{{ $user->slug }}</div>
-                                <a class="block font-bold" href="{{ route('users.show', ['slug' => $user->slug]) }}">
+                                <a class="block font-bold text-xs sm:text-sm md:text-md" href="{{ route('users.show', ['slug' => $user->slug]) }}">
                                     {{ $user->name }}
                                 </a>
                             </div>
                         </div>
 
-                        <div class="m-auto px-4 text-center w-2/12">
-                            <div class="text-gray-400 font-bold text-sm">投稿数</div>
+                        <div class="m-auto px-2 text-center text-xs w-2/12">
+                            <div class="pb-1 text-gray-400 font-bold">{{ __('messages.post_count') }}</div>
                             <div>{{ $user->facemarks->count() ?? 0}}</div>
                         </div>
 
-                        <div class="m-auto px-4 text-center w-2/12">
-                            <div class="text-gray-400 font-bold text-sm">フォロー</div>
+                        <div class="m-auto px-2 text-center text-xs w-2/12">
+                            <div class="pb-1 text-gray-400 font-bold">{{ __('messages.following') }}</div>
                             <div>{{ $user->followers?->count() ?? 0 }}</div>
                         </div>
 
-                        <div class="m-auto px-4 text-center w-2/12">
-                            <div class="text-gray-400 font-bold text-sm">フォロワー</div>
+                        <div class="m-auto px-2 text-center text-xs w-2/12">
+                            <div class="pb-1 text-gray-400 font-bold">{{ __('messages.followers') }}</div>
                             <div>{{ $user->followings?->count() ?? 0 }}</div>
                         </div>
 
-                        <div class="w-24">
+                        <div class="w-24 text-xs md:w-28 md:text-sm">
                             @if (Auth::user() && Auth::user()->id !== $user->id)
                                 @if ($user->followings?->contains(Auth::user()->id))
-                                    <x-molecules.follow-button :user="$user" action="remove" color="red">
-                                        Unfollow
-                                    </x-molecules.follow-button>
+                                    <x-atoms.follow-button :user="$user" action="remove" color="red">
+                                        {{ __('messages.unfollow') }}
+                                    </x-atoms.follow-button>
                                 @else
-                                    <x-molecules.follow-button :user="$user" action="add" color="blue">
-                                        Follow
-                                    </x-molecules.follow-button>
+                                    <x-atoms.follow-button :user="$user" action="add" color="blue">
+                                        {{ __('messages.follow') }}
+                                    </x-atoms.follow-button>
                                 @endif
                             @endif
                         </div>
