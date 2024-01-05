@@ -1,5 +1,5 @@
 <div class="flex justify-between relative">
-    <div onclick="clickFacemark('{{ $facemark->data }}', '{{ $facemark->ulid }}')">
+    <div onclick="clickFacemark({{ json_encode($facemark->data) }}, '{{ $facemark->ulid }}')">
         {{ $facemark->data }}
     </div>
     <div id="{{ $facemark->ulid }}" class="facemark-menu flex items-center">
@@ -11,7 +11,7 @@
          id="menu-options-{{ $prefix }}{{ $facemark->ulid }}">
         <div class="flex justify-between">
             <p class="cursor-pointer hover:bg-gray-200 py-2 text-center w-full"
-               onclick="clickFacemark('{{ $facemark->data }}', '{{ $facemark->ulid }}')">
+               onclick="clickFacemark({{ json_encode($facemark->data) }}, '{{ $facemark->ulid }}')">
                 <i class="fa-regular fa-copy"></i>
             </p>
             <p class="cursor-pointer hover:bg-gray-200 text-center w-full" onclick="hideAllMenuOptions()">
