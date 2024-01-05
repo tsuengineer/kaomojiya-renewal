@@ -18,7 +18,7 @@
         @method('patch')
 
         @if($user->avatars?->path)
-            <img src="{{ asset('storage/' . config('image.avatar_path') . '/' . floor($user->id / 1000) . '/' . $user->avatars->path) }}" class="w-32 h-32" alt="アバター" />
+            <x-atoms.avatar :user="Auth::user()" size="32"></x-atoms.avatar>
         @endif
         <div>
             <input type="file" name="avatar">
@@ -27,7 +27,7 @@
 
         <div>
             <x-input-label for="name" :value="__('Name')" />
-            <x-text-input id="name" name="name" type="text" class="mt-1 block w-full" :value="old('name', $user->name)" required autofocus autocomplete="name" />
+            <x-text-input id="name" name="name" type="text" class="mt-1 block w-full" :value="old('name', $user->name)" required autofocus autocomplete="name" maxlength="20" />
             <x-input-error class="mt-2" :messages="$errors->get('name')" />
         </div>
 

@@ -104,7 +104,6 @@
                 if (response.ok) {
                     response.json().then(data => {
                         if (!data.success) {
-                            document.getElementById('favoriteAside').style.display = 'block';
                             return;
                         }
                         button.dataset.action = 'remove';
@@ -133,7 +132,6 @@
                 if (response.ok) {
                     response.json().then(data => {
                         if (!data.success) {
-                            document.getElementById('favoriteAside').style.display = 'block';
                             return;
                         }
                         button.dataset.action = 'add';

@@ -5,14 +5,14 @@
         <!-- Slug -->
         <div>
             <x-input-label for="slug" :value="__('Slug') . __('Slug description')" />
-            <x-text-input id="slug" class="block mt-1 w-full" type="text" name="slug" :value="old('slug')" pattern="[a-zA-Z0-9_-]+" required autofocus autocomplete="slug" />
+            <x-text-input id="slug" class="block mt-1 w-full" type="text" name="slug" :value="old('slug')" pattern="[a-zA-Z0-9_-]+" required autofocus autocomplete="slug" maxlength="20" />
             <x-input-error :messages="$errors->get('slug')" class="mt-2" />
         </div>
 
         <!-- Name -->
         <div class="mt-4">
             <x-input-label for="name" :value="__('Name')" />
-            <x-text-input id="name" class="block mt-1 w-full" type="text" name="name" :value="old('name')" required autofocus autocomplete="name" />
+            <x-text-input id="name" class="block mt-1 w-full" type="text" name="name" :value="old('name')" required autofocus autocomplete="name" maxlength="20" />
             <x-input-error :messages="$errors->get('name')" class="mt-2" />
         </div>
 

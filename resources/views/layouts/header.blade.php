@@ -34,7 +34,7 @@
                         <x-dropdown align="right">
                             <x-slot name="trigger">
                                 <button class="inline-flex items-center px-3 py-2 w-16 border border-transparent text-sm leading-4 font-medium rounded-md text-gray-500 dark:text-gray-400 bg-white dark:bg-gray-800 hover:text-gray-700 dark:hover:text-gray-300 focus:outline-none transition ease-in-out duration-150">
-                                    <x-atoms.avatar :user="Auth::user()" type="header"></x-atoms.avatar>
+                                    <x-atoms.avatar :user="Auth::user()" size="9"></x-atoms.avatar>
                                 </button>
                             </x-slot>
 
