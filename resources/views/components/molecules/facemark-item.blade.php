@@ -1,5 +1,5 @@
 <div class="flex justify-between relative">
-    <div onclick="clickFacemark('{{ $facemark->data }}')">
+    <div onclick="clickFacemark('{{ $facemark->data }}', '{{ $facemark->ulid }}')">
         {{ $facemark->data }}
     </div>
     <div id="{{ $facemark->ulid }}" class="facemark-menu flex items-center">
@@ -7,9 +7,11 @@
             <x-atoms.icon-three-point-leader></x-atoms.icon-three-point-leader>
         </div>
     </div>
-    <div class="menu-options hidden bg-white border rounded shadow right-0 top-6 absolute z-10 w-48" id="menu-options-{{ $prefix }}{{ $facemark->ulid }}">
+    <div class="menu-options hidden bg-white border rounded shadow right-0 top-6 absolute z-10 w-48"
+         id="menu-options-{{ $prefix }}{{ $facemark->ulid }}">
         <div class="flex justify-between">
-            <p class="cursor-pointer hover:bg-gray-200 py-2 text-center w-full" onclick="clickFacemark('{{ $facemark->data }}')">
+            <p class="cursor-pointer hover:bg-gray-200 py-2 text-center w-full"
+               onclick="clickFacemark('{{ $facemark->data }}', '{{ $facemark->ulid }}')">
                 <i class="fa-regular fa-copy"></i>
             </p>
             <p class="cursor-pointer hover:bg-gray-200 text-center w-full" onclick="hideAllMenuOptions()">
@@ -19,15 +21,20 @@
             </p>
             @if(Auth::check())
                 @if(Auth::user()->hasFavorite($facemark->id))
-                    <p class="cursor-pointer hover:bg-gray-200 py-2 text-center w-full" onclick="clickFavorite({{ $facemark->id }})">
-                        <button class="favoriteButton-{{ $facemark->id }} btn" data-action="remove" data-facemark-id="{{ $facemark->id }}">
+                    <p class="cursor-pointer hover:bg-gray-200 py-2 text-center w-full"
+                       onclick="clickFavorite({{ $facemark->id }})">
+                        <button class="favoriteButton-{{ $facemark->id }} btn" data-action="remove"
+                                data-facemark-id="{{ $facemark->id }}">
                             <i class="fa-solid fa-star text-yellow-500"></i>
                         </button>
-                        <span class="text-xs text-yellow-500 fav-count-{{ $facemark->id }}">{{ $facemark->favorites_count }}</span>
+                        <span
+                            class="text-xs text-yellow-500 fav-count-{{ $facemark->id }}">{{ $facemark->favorites_count }}</span>
                     </p>
                 @else
-                    <p class="cursor-pointer hover:bg-gray-200 py-2 text-center w-full" onclick="clickFavorite({{ $facemark->id }})">
-                        <button class="favoriteButton-{{ $facemark->id }} btn" data-action="add" data-facemark-id="{{ $facemark->id }}">
+                    <p class="cursor-pointer hover:bg-gray-200 py-2 text-center w-full"
+                       onclick="clickFavorite({{ $facemark->id }})">
+                        <button class="favoriteButton-{{ $facemark->id }} btn" data-action="add"
+                                data-facemark-id="{{ $facemark->id }}">
                             <i class="fa-regular fa-star"></i>
                         </button>
                         <span class="text-xs fav-count-{{ $facemark->id }}">{{ $facemark->favorites_count }}</span>
@@ -60,7 +67,15 @@
         menuOptions.style.display = (menuOptions.style.display === 'block') ? 'none' : 'block';
     }
 
-    function clickFacemark(copyText) {
+    function clickFacemark(copyText, facemarkUlid) {
+        fetch(`/facemarks/${facemarkUlid}/copy`, {
+            method: 'POST',
+            headers: {
+                'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').getAttribute('content'),
+                'Content-Type': 'application/json'
+            }
+        });
+
         navigator.clipboard.writeText(copyText)
             .then(() => {
                 Swal.fire({
@@ -80,7 +95,7 @@
 
     function clickFavorite(facemarkId) {
         const favoriteButtons = document.querySelectorAll('.favoriteButton-' + facemarkId);
-        favoriteButtons.forEach(function(favoriteButton) {
+        favoriteButtons.forEach(function (favoriteButton) {
             const action = favoriteButton.dataset.action;
             if (action === 'add') {
                 addFavorite(facemarkId, favoriteButton);
@@ -109,7 +124,7 @@
                         button.dataset.action = 'remove';
                         button.innerHTML = '<i class="fa-solid fa-star text-yellow-500"></i>';
                         const favCounts = document.querySelectorAll('.fav-count-' + facemarkId);
-                        favCounts.forEach(function(favCount) {
+                        favCounts.forEach(function (favCount) {
                             favCount.innerText = data.favorite_count ?? 0;
                             favCount.classList.add('text-yellow-500');
                         });
@@ -137,7 +152,7 @@
                         button.dataset.action = 'add';
                         button.innerHTML = '<i class="fa-sharp fa-regular fa-star"></i>';
                         const favCounts = document.querySelectorAll('.fav-count-' + facemarkId);
-                        favCounts.forEach(function(favCount) {
+                        favCounts.forEach(function (favCount) {
                             favCount.innerText = data.favorite_count ?? 0;
                             favCount.classList.remove('text-yellow-500');
                         });

@@ -33,6 +33,7 @@ Route::middleware('auth')->group(function () {
 });
 
 Route::get('/facemarks/{ulid}', [FacemarkController::class, 'show'])->name('facemarks.show');
+Route::post('/facemarks/{ulid}/copy', [FacemarkController::class, 'copy'])->name('facemarks.copy');
 
 Route::get('/search', [SearchController::class, 'index'])->name('search.index');
 
