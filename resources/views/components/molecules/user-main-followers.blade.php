@@ -1,23 +1,23 @@
 <div class="mb-8">
-    <h1 class="font-bold">{{ __('messages.following') }}</h1>
+    <h1 class="font-bold">{{ __('messages.followers') }}</h1>
     <div class="flex flex-col mb-4">
         <ul class="py-2 mb-12">
-            @foreach($user->followers as $user)
+            @foreach($user->followings as $user)
                 <li class="flex justify-between items-center py-4 px-1 border-b">
-                    <a class="flex items-center w-8/12" href="{{ route('users.show', ['slug' => $user->slug]) }}">
+                    <div class="flex items-center w-8/12">
                         <x-atoms.avatar :user="$user" size="9"></x-atoms.avatar>
                         <div class="pl-4">
                             <div class="text-sm text-gray-600">
                                 &#64;{{ $user->slug }}
-                                @if (Auth::user() && $user->followers?->contains(Auth::user()->id))
+                                @if (Auth::user() && $user->followings?->contains(Auth::user()->id))
                                     <span class="ml-1 p-1 text-gray-600 bg-gray-100 text-xs rounded">{{ __('messages.follows_you') }}</span>
                                 @endif
                             </div>
-                            <span class="block font-bold text-xs sm:text-sm md:text-md">
+                            <a class="block font-bold text-xs sm:text-sm md:text-md" href="{{ route('users.show', ['slug' => $user->slug]) }}">
                                 {{ $user->name }}
-                            </span>
+                            </a>
                         </div>
-                    </a>
+                    </div>
 
                     <div class="w-24 text-xs md:w-28 md:text-sm">
                         @if (Auth::user() && Auth::user()->id !== $user->id)

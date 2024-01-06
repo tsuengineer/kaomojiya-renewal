@@ -16,29 +16,53 @@
             <ul class="py-2 mb-12">
                 @foreach($users as $user)
                     <li class="flex justify-between items-center py-4 px-1 border-b">
-                        <div class="flex items-center w-3/12">
+                        <a class="flex items-center w-3/12" href="{{ route('users.show', ['slug' => $user->slug]) }}">
                             <x-atoms.avatar :user="$user" size="9"></x-atoms.avatar>
                             <div class="pl-4">
                                 <div class="text-sm text-gray-600">&#64;{{ $user->slug }}</div>
-                                <a class="block font-bold text-xs sm:text-sm md:text-md" href="{{ route('users.show', ['slug' => $user->slug]) }}">
+                                <span class="block font-bold text-xs sm:text-sm md:text-md">
                                     {{ $user->name }}
-                                </a>
+                                </span>
                             </div>
-                        </div>
+                        </a>
 
                         <div class="m-auto px-2 text-center text-xs w-2/12">
                             <div class="pb-1 text-gray-400 font-bold">{{ __('messages.post_count') }}</div>
-                            <div>{{ $user->facemarks->count() ?? 0}}</div>
+                            @if ($user->facemarks->count() > 0)
+                                <a href="{{ route('search.index', ['user_slug' => $user->slug]) }}">
+                                    <div>
+                                        {{ $user->facemarks->count() }}
+                                    </div>
+                                </a>
+                            @else
+                                <div>0</div>
+                            @endif
                         </div>
 
                         <div class="m-auto px-2 text-center text-xs w-2/12">
                             <div class="pb-1 text-gray-400 font-bold">{{ __('messages.following') }}</div>
-                            <div>{{ $user->followers?->count() ?? 0 }}</div>
+                            @if ($user->followers->count() > 0)
+                                <a href="{{ route('users.followings', ['slug' => $user->slug]) }}">
+                                    <div>
+                                        {{ $user->followers->count() }}
+                                    </div>
+                                </a>
+                            @else
+                                <div>0</div>
+                            @endif
                         </div>
 
                         <div class="m-auto px-2 text-center text-xs w-2/12">
                             <div class="pb-1 text-gray-400 font-bold">{{ __('messages.followers') }}</div>
-                            <div>{{ $user->followings?->count() ?? 0 }}</div>
+                            @if ($user->followings->count() > 0)
+                                <a href=" {{ route('users.followers', ['slug' => $user->slug]) }}">
+                                    <div>
+                                        {{ $user->followings->count() }}
+                                    </div>
+                                </a>
+                            @else
+                                <div>0</div>
+                            @endif
                         </div>
 
                         <div class="w-24 text-xs md:w-28 md:text-sm">
