@@ -2,6 +2,7 @@
 
 return [
     "add_to_favorite" => "Favorite",
+    "contributor" => "Contributor",
     "copied" => "copied!!",
     "copy_facemark" => "Copy facemark",
     "details_of_this_facemark" => "Details of this facemark",

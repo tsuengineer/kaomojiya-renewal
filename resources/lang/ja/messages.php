@@ -2,6 +2,7 @@
 
 return [
     "add_to_favorite" => "お気に入りに追加",
+    "contributor" => "投稿者",
     "copied" => "をコピーしました！",
     "copy_facemark" => "顔文字をコピーする",
     "details_of_this_facemark" => "この顔文字の詳細",
