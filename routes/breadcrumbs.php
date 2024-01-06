@@ -40,6 +40,18 @@ Breadcrumbs::for('user', function (BreadcrumbTrail $trail, User $user) {
     $trail->push($user->name, route('users.show', ['slug' => $user->slug]));
 });
 
+// フォロワー
+Breadcrumbs::for('followers', function (BreadcrumbTrail $trail, User $user) {
+    $trail->parent('user', $user);
+    $trail->push(__('title.followers'), route('users.followers', ['slug' => $user->slug]));
+});
+
+// フォロー中
+Breadcrumbs::for('followings', function (BreadcrumbTrail $trail, User $user) {
+    $trail->parent('user', $user);
+    $trail->push(__('title.followings'), route('users.followings', ['slug' => $user->slug]));
+});
+
 // エラー
 Breadcrumbs::for('errors.204', function (BreadcrumbTrail $trail) {
     $trail->parent('top');

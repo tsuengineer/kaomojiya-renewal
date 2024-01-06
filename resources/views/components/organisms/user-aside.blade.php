@@ -1,4 +1,4 @@
-<section class="w-36 m-auto sm:m-0">
+<section class="w-56 sm:w-36 m-auto sm:m-0">
     <div class="pb-8">
         <figure class="flex justify-center pb-4">
             <x-atoms.avatar :user="$user" size="24"></x-atoms.avatar>
@@ -9,11 +9,11 @@
         </div>
     </div>
     <div>
-        <dl class="flex justify-between">
+        <dl class="flex justify-between pb-2">
             <dt class="font-bold text-sm">{{ __('messages.post_count') }}</dt>
             <dd class="text-sm font-bold">{{ $user->facemarks->count() ?? 0}}</dd>
         </dl>
-        <dl class="flex justify-between">
+        <dl class="flex justify-between pb-2">
             <dt class="font-bold text-sm">{{ __('messages.following') }}</dt>
             <dd class="text-sm font-bold">{{ $user->followers?->count() ?? 0 }}</dd>
         </dl>

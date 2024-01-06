@@ -16,6 +16,7 @@ return [
     "follow" => "Follow",
     "following" => "Following",
     "followers" => "Followers",
+    "follows_you" => "Follows you",
     "success_create_facemark" => "facemark have been successfully posted.",
     "success_delete_facemark" => "facemark were successfully removed.",
     "greeting" => "greeting",

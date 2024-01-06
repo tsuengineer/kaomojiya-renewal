@@ -22,4 +22,18 @@ class UserController extends Controller
 
         return view('users.show', $data);
     }
+
+    public function followings(ShowAction $action, string $slug): View
+    {
+        $data = $action($slug);
+
+        return view('users.followings', $data);
+    }
+
+    public function followers(ShowAction $action, string $slug): View
+    {
+        $data = $action($slug);
+
+        return view('users.followers', $data);
+    }
 }

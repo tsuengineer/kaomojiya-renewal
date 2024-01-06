@@ -39,6 +39,8 @@ Route::get('/search', [SearchController::class, 'index'])->name('search.index');
 
 Route::get('/users', [UserController::class, 'index'])->name('users.index');
 Route::get('/users/{slug}', [UserController::class, 'show'])->name('users.show');
+Route::get('/users/{slug}/followings', [UserController::class, 'followings'])->name('users.followings');
+Route::get('/users/{slug}/followers', [UserController::class, 'followers'])->name('users.followers');
 
 Route::post('/favorites/{id}', [FavoriteController::class, 'store'])->name('favorite.store');
 Route::delete('/favorites/{id}', [FavoriteController::class, 'destroy'])->name('favorite.destroy');
